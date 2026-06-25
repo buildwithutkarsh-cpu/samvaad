@@ -1,0 +1,45 @@
+{
+  "name": "SAMVAAD",
+  "tagline": "Breaking Communication Barriers",
+  "shortDescription": "SAMVAAD is a wearable communication device that translates Indian Sign Language into text in real time, helping deaf and hard-of-hearing individuals communicate naturally with people who do not understand sign language.",
+  "applications": [
+    { "id": 1, "title": "Schools", "description": "Enabling deaf students to participate fully in classroom discussions and educational settings.", "icon": "GraduationCap" },
+    { "id": 2, "title": "Hospitals", "description": "Facilitating clear communication between medical professionals and deaf patients.", "icon": "Heart" },
+    { "id": 3, "title": "Offices", "description": "Creating inclusive workplaces where deaf employees can communicate seamlessly.", "icon": "Building2" },
+    { "id": 4, "title": "Government Services", "description": "Ensuring deaf citizens have equal access to public services and facilities.", "icon": "Landmark" },
+    { "id": 5, "title": "Customer Support", "description": "Empowering businesses to serve deaf customers with the same quality of service.", "icon": "Headphones" },
+    { "id": 6, "title": "Public Facilities", "description": "Making public spaces accessible for the deaf community in everyday life.", "icon": "MapPin" },
+    { "id": 7, "title": "Accessibility Programs", "description": "Supporting broader accessibility initiatives across communities and institutions.", "icon": "Accessibility" }
+  ],
+  "hardware": [
+    { "id": 1, "name": "Raspberry Pi", "description": "Central processing unit that runs the entire gesture recognition pipeline.", "color": "#00d8ff" },
+    { "id": 2, "name": "Camera Module", "description": "High-resolution camera capturing hand movements at 30fps for real-time analysis.", "color": "#7c3aed" },
+    { "id": 3, "name": "OLED Display", "description": "Compact display showing translated text output directly on the device.", "color": "#059669" },
+    { "id": 4, "name": "Wearable Housing", "description": "Ergonomic, lightweight enclosure designed for comfortable extended wear.", "color": "#0284c7" }
+  ],
+  "timeline": [
+    { "id": 1, "phase": "Research", "description": "Comprehensive study of Indian Sign Language, assistive technology, and user needs.", "date": "Phase 01" },
+    { "id": 2, "phase": "Concept Design", "description": "Ideation sessions, sketches, and architectural planning for the wearable system.", "date": "Phase 02" },
+    { "id": 3, "phase": "Prototype V1", "description": "First working prototype validating core hardware and software integration.", "date": "Phase 03" },
+    { "id": 4, "phase": "Model Training", "description": "Training gesture recognition models on a comprehensive ISL dataset.", "date": "Phase 04" },
+    { "id": 5, "phase": "Hardware Integration", "description": "Assembling all components into the wearable housing with optimized layout.", "date": "Phase 05" },
+    { "id": 6, "phase": "Testing", "description": "Extensive real-world testing with deaf community members and sign language experts.", "date": "Phase 06" },
+    { "id": 7, "phase": "Optimization", "description": "Performance tuning, latency reduction, and accuracy improvements.", "date": "Phase 07" },
+    { "id": 8, "phase": "Final Prototype", "description": "Production-ready prototype with polished hardware and refined software.", "date": "Phase 08" },
+    { "id": 9, "phase": "Exhibition", "description": "Showcase at national innovation exhibitions and accessibility conferences.", "date": "Phase 09" }
+  ],
+  "futureScope": [
+    { "id": 1, "title": "Support for More Languages", "description": "Expanding beyond Indian Sign Language to support regional and international sign languages.", "icon": "Globe" },
+    { "id": 2, "title": "Offline Processing", "description": "On-device inference for complete functionality without internet connectivity.", "icon": "Wifi" },
+    { "id": 3, "title": "Mobile Companion App", "description": "iOS and Android application for extended functionality and personalization.", "icon": "Smartphone" },
+    { "id": 4, "title": "Improved Battery Life", "description": "Next-generation power management for multi-day usage on a single charge.", "icon": "Battery" },
+    { "id": 5, "title": "SOS Safety Mode", "description": "Emergency alert support for future wearable safety functionality.", "icon": "Hand" },
+    { "id": 6, "title": "Expanded Gesture Library", "description": "Growing the recognized gesture set to cover more complex expressions and sentences.", "icon": "Cloud" },
+    { "id": 7, "title": "Global Deployment", "description": "Partnering with organizations worldwide to bring accessible communication to all.", "icon": "Satellite" }
+  ],
+  "contact": {
+    "email": "[EMAIL]",
+    "phone": "[PHONE]",
+    "github": "[GITHUB_URL]"
+  }
+}

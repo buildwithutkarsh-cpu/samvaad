@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Ishaan Sharma",
+    "role": "Team Lead",
+    "description": "Leads overall project development, system integration, innovation strategy, and team coordination.",
+    "photo": "/images/team/ishaan.jpg",
+    "objectPosition": "center 15%"
+  },
+  {
+    "id": 2,
+    "name": "Sweety",
+    "role": "Hardware Lead",
+    "description": "Responsible for electronics, hardware architecture, wearable integration, and system assembly.",
+    "photo": "/images/team/sweety.jpg",
+    "objectPosition": "center 8%"
+  },
+  {
+    "id": 3,
+    "name": "Utkarsh Saraswat",
+    "role": "Software Lead",
+    "description": "Develops gesture recognition systems, software architecture, and technical implementation.",
+    "photo": "/images/team/utkarsh.jpg",
+    "objectPosition": "center 12%"
+  },
+  {
+    "id": 4,
+    "name": "Samarth Agarwal",
+    "role": "UX & Design Lead",
+    "description": "Responsible for product design, user experience, visual communication, and branding.",
+    "photo": "/images/team/samarth.jpg",
+    "objectPosition": "center 10%"
+  },
+  {
+    "id": 5,
+    "name": "Kunal",
+    "role": "Documentation Lead",
+    "description": "Handles documentation, research, presentations, reporting, and project records.",
+    "photo": "/images/team/kunal.jpg",
+    "objectPosition": "center 35%"
+  }
+]

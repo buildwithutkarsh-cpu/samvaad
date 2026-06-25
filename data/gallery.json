@@ -1,0 +1,8 @@
+[
+  { "id": 1, "src": "/images/gallery/team-group.jpg", "alt": "The full SAMVAAD team at the hackathon", "category": "team", "placeholder": false, "span": "col-span-3 row-span-2", "objectPosition": "center 25%" },
+  { "id": 2, "src": "/images/gallery/demo-presentation.jpg", "alt": "Sweety presenting the SAMVAAD demo to a mentor", "category": "exhibition", "placeholder": false, "span": "col-span-2 row-span-2", "objectPosition": "center 20%" },
+  { "id": 3, "src": "/images/gallery/team-laptops.jpg", "alt": "Team collaborating on laptops with mentor", "category": "team", "placeholder": false, "span": "col-span-1 row-span-2", "objectPosition": "center 30%" },
+  { "id": 4, "src": "/images/gallery/hardware-setup.jpg", "alt": "Raspberry Pi and Logitech webcam hardware setup", "category": "project", "placeholder": false, "span": "col-span-2 row-span-2", "objectPosition": "center 40%" },
+  { "id": 5, "src": "", "alt": "Team presentation", "category": "team", "placeholder": true, "span": "col-span-1 row-span-1", "objectPosition": "center" },
+  { "id": 6, "src": "/images/gallery/hardware-setup.jpg", "alt": "SAMVAAD hardware components close-up", "category": "project", "placeholder": false, "span": "col-span-1 row-span-1", "objectPosition": "center 30%" }
+]
