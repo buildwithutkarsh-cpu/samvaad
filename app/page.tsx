@@ -11,7 +11,6 @@ import ProblemSection from '@/components/sections/ProblemSection'
 import SolutionSection from '@/components/sections/SolutionSection'
 import HardwareSection from '@/components/sections/HardwareSection'
 import SoftwareSection from '@/components/sections/SoftwareSection'
-import LiveMonitorSection from '@/components/sections/LiveMonitorSection'
 import ProductDesignSection from '@/components/sections/ProductDesignSection'
 import TeamSection from '@/components/sections/TeamSection'
 import GallerySection from '@/components/sections/GallerySection'
@@ -53,9 +52,7 @@ export default function HomePage() {
               <SolutionSection />
               <HardwareSection />
               <SoftwareSection />
-              
-              {/* Live Streaming Interpretation Console */}
-              <LiveMonitorSection />
+            
               
               <ProductDesignSection />
               <TeamSection />
