@@ -1,59 +1,61 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Plus, Maximize2 } from 'lucide-react'
+import { Plus } from 'lucide-react'
 
-const CAD_RENDERS = [
-  { id: 1, label: 'front view mapping', sublabel: 'main device face layer featuring physical display outputs.', tag: 'CAD_RENDER_1' },
-  { id: 2, label: 'side profile geometry', sublabel: 'ultra-slim ergonomic chassis boundaries.', tag: 'CAD_RENDER_2' },
-  { id: 3, label: 'wrist mount interface', sublabel: 'tactile wearable integration component attachment details.', tag: 'CAD_RENDER_3' },
-  { id: 4, label: 'exploded structural matrix', sublabel: 'internal component distribution layers and bus routings.', tag: 'CAD_RENDER_4' },
+// Simple list of design features using normal, clear words
+const DESIGN_POINTS = [
+  { id: 1, title: 'the front screen', description: 'the main face of the device where text messages appear clearly.', tag: 'front view' },
+  { id: 2, title: 'thin design', description: 'made to be very slim so it sits flat and looks natural on your arm.', tag: 'side view' },
+  { id: 3, title: 'wrist band', description: 'a soft, comfortable strap that keeps the device safe and secure.', tag: 'the strap' },
+  { id: 4, title: 'clean build', description: 'how all the simple inside parts fit together perfectly without being bulky.', tag: 'inside setup' },
 ]
 
-function RenderPlaceholder({ label, sublabel, tag, index }: { label: string; sublabel: string; tag: string; index: number }) {
+function DesignCard({ title, description, tag, index }: { title: string; description: string; tag: string; index: number }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-10%' })
+  const [isHovered, setIsHovered] = useState(false)
   const isWide = index === 0 || index === 3
 
   return (
     <motion.div
       ref={ref}
-      className={`group relative bg-white border-b-2 last:border-b-0 md:border-b-2 border-[#0a0a0a] md:even:border-l-0 border-r-2 last:border-r-2 flex flex-col justify-between p-6 overflow-hidden min-h-[260px] cursor-crosshair hover:bg-[#0a0a0a] transition-colors duration-150 ${
+      className={`group relative bg-white border-b-2 last:border-b-0 md:border-b-2 border-black md:even:border-l-0 border-r-2 last:border-r-2 flex flex-col justify-between p-8 overflow-hidden min-h-[200px] transition-colors duration-150 ${
         isWide ? 'md:col-span-2' : ''
       }`}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      whileHover={{ backgroundColor: '#0a0a0a' }}
     >
-      {/* Structural Metadata Header Row */}
-      <div className="flex justify-between items-start w-full font-mono text-[9px] tracking-wider text-[#0a0a0a]/40 group-hover:text-[#ff3e18]/80 transition-colors duration-150">
-        <span>[ viewport_0{index + 1} // system_mesh ]</span>
-        <Maximize2 className="w-3 h-3 opacity-60" />
+      {/* Small top label */}
+      <div className={`font-mono text-[10px] tracking-wider transition-colors duration-150 ${
+        isHovered ? 'text-[#ff421d]' : 'text-neutral-400'
+      }`}>
+        [ detail 0{index + 1} ]
       </div>
 
-      {/* Center Graphics Frame Box Representation */}
-      <div className="my-8 flex justify-center items-center w-full">
-        <div className="w-12 h-12 border border-[#0a0a0a] group-hover:border-[#ff3e18] bg-[#ececec]/50 group-hover:bg-[#ececec]/10 flex items-center justify-center transition-colors duration-150">
-          <svg viewBox="0 0 40 40" className="w-6 h-6 stroke-[#0a0a0a] group-hover:stroke-white transition-colors duration-150" fill="none">
-            <rect x="6" y="10" width="28" height="20" strokeWidth="2" />
-            <line x1="6" y1="20" x2="34" y2="20" strokeWidth="1" strokeDasharray="2 2" />
-            <line x1="20" y1="10" x2="20" y2="30" strokeWidth="1" strokeDasharray="2 2" />
-          </svg>
-        </div>
+      {/* Pure Text Body (No graphic boxes or icons) */}
+      <div className="my-6">
+        <h3 className={`text-2xl font-black tracking-tight lowercase transition-colors duration-150 ${
+          isHovered ? 'text-white' : 'text-black'
+        }`}>
+          {title}
+        </h3>
+        
+        <p className={`text-sm font-medium mt-2 leading-relaxed max-w-xl transition-colors duration-150 ${
+          isHovered ? 'text-neutral-300' : 'text-neutral-600'
+        }`}>
+          {description}
+        </p>
       </div>
 
-      {/* Typography Description Panel */}
-      <div className="w-full">
-        <div className="text-lg font-display font-black tracking-tight lowercase text-[#0a0a0a] group-hover:text-white transition-colors duration-150 mb-1">
-          {label}
-        </div>
-        <div className="text-xs font-medium text-[#0a0a0a]/70 group-hover:text-white/80 transition-colors duration-150 leading-relaxed max-w-xl">
-          {sublabel}
-        </div>
-        <div className="font-mono text-[9px] text-[#ff3e18] mt-3 tracking-widest font-bold block uppercase">
-          // {tag}
-        </div>
+      {/* Simple bottom badge */}
+      <div className="font-mono text-[10px] text-[#ff421d] tracking-widest font-bold uppercase">
+        // {tag}
       </div>
     </motion.div>
   )
@@ -64,66 +66,65 @@ export default function ProductDesignSection() {
   const inView = useInView(ref, { once: true, margin: '-15%' })
 
   return (
-    <section id="design" className="relative py-24 bg-[#ececec] text-[#0a0a0a] border-b-2 border-[#0a0a0a] font-sans overflow-hidden select-none">
+    <section id="design" className="relative py-20 bg-[#ececec] text-black border-b-2 border-black font-sans select-none">
       
-      {/* Top Meta Navigation Ribbon */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center border-b border-[#0a0a0a]/10 pb-6 mb-16 font-mono text-[10px] tracking-widest uppercase font-bold text-[#0a0a0a]/60">
-        <div className="flex items-center gap-1 text-[#0a0a0a]">
-          <Plus className="w-3 h-3 text-[#ff3e18]" /> [ industrial_chassis ]
+      {/* Top simple label bar */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center border-b border-black/10 pb-6 mb-12 font-mono text-xs uppercase font-bold text-neutral-500">
+        <div className="flex items-center gap-1">
+          <Plus className="w-3 h-3 text-[#ff421d]" /> [ product shapes ]
         </div>
-        <div>form_factor // spec_v2.6</div>
-        <div className="hidden sm:block">cad_pipeline_compiled</div>
+        <div>device size // simple build</div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         
-        {/* Asymmetric Header Layout */}
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mb-16">
+        {/* Simple Main Title Area */}
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mb-12">
           <div className="lg:col-span-7">
-            <h2 className="text-5xl sm:text-6xl md:text-7xl font-display font-black tracking-tight lowercase leading-[0.85] text-[#0a0a0a]">
-              ergonomic structural <span className="text-[#ff3e18]">enclosures.</span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight lowercase leading-none text-black">
+              built to be easy to <span className="text-[#ff421d]">wear.</span>
             </h2>
           </div>
           <div className="lg:col-span-5">
-            <p className="text-sm font-medium leading-relaxed text-[#0a0a0a]/80 max-w-md border-l-2 border-[#ff3e18] pl-4 py-1">
-              engineered directly for functional wearability. our industrial architectural envelope prioritizes immediate physical comfort without indicating systemic limitation.
+            <p className="text-sm font-medium leading-relaxed text-neutral-700 max-w-md border-l-2 border-[#ff421d] pl-4 py-1">
+              We designed this device to be as comfortable as possible for everyday use. It is small, lightweight, and fits easily onto your wrist.
             </p>
           </div>
         </div>
 
-        {/* Master Brutalist Structural Layout Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t-2 border-l-2 border-[#0a0a0a] bg-white shadow-[8px_8px_0px_0px_#0a0a0a]">
-          {CAD_RENDERS.map((render, i) => (
-            <RenderPlaceholder key={render.id} {...render} index={i} />
+        {/* Text Grid Area */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t-2 border-l-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+          {DESIGN_POINTS.map((item, i) => (
+            <DesignCard key={item.id} {...item} index={i} />
           ))}
         </div>
 
-        {/* Technical Data Specification Row Matrix */}
+        {/* Bottom Small Measurement Rows */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border-2 border-[#0a0a0a] bg-white mt-12 shadow-[4px_4px_0px_0px_#0a0a0a]"
-          initial={{ opacity: 0, y: 20 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border-2 border-black bg-white mt-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-10%' }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
         >
           {[
-            { label: 'total physical mass weight', value: '< 120g', desc: 'optimized aggregate module displacement threshold metrics' },
-            { label: 'power consumption vector', value: 'on-chip regulation', desc: 'low thermodynamic profile metrics preventing localized heating' },
-            { label: 'longest dimension axis', value: '82mm x 45mm', desc: 'low Profile architectural horizontal dimensional clearance footprint' },
+            { label: 'total weight', value: 'very light', desc: 'it weighs less than a standard phone so you barely feel it.' },
+            { label: 'temperature', value: 'stays cool', desc: 'uses very low power so it never gets warm against your skin.' },
+            { label: 'device size', value: 'small fit', desc: 'thin and compact so it stays out of your way during the day.' },
           ].map((spec, i) => (
             <div 
               key={spec.label} 
-              className="p-6 border-b-2 last:border-b-0 lg:border-b-0 lg:border-r-2 last:border-r-2 border-[#0a0a0a] flex flex-col justify-between min-h-[140px]"
+              className="p-6 border-b-2 last:border-b-0 lg:border-b-0 lg:border-r-2 last:border-r-2 border-black flex flex-col justify-between min-h-[130px]"
             >
-              <div className="font-mono text-[9px] font-black uppercase tracking-widest text-[#0a0a0a]/40 mb-4">
-                // metric_node_0{i + 1}
+              <div className="font-mono text-[10px] font-bold text-neutral-400 mb-2">
+                // fact 0{i + 1}
               </div>
               <div>
-                <div className="text-3xl font-display font-black tracking-tight text-[#ff3e18] lowercase mb-1">
+                <div className="text-2xl font-black text-[#ff421d] lowercase mb-1">
                   {spec.value}
                 </div>
-                <div className="text-xs font-bold text-[#0a0a0a] lowercase mb-1">{spec.label}</div>
-                <div className="text-[10px] text-[#0a0a0a]/60 leading-tight font-medium lowercase">{spec.desc}</div>
+                <div className="text-xs font-bold text-black lowercase mb-1">{spec.label}</div>
+                <div className="text-xs text-neutral-600 leading-tight font-medium lowercase">{spec.desc}</div>
               </div>
             </div>
           ))}
